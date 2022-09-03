@@ -8,3 +8,9 @@ class HomeView(TemplateView):
 
 class ListadoView(TemplateView):
     template_name = 'listado.html'
+
+class AdministradoresView(TemplateView):
+    template_name = 'administradores.html'
+
+class AcercaDeView(TemplateView):
+    template_name = 'acercaDe.html'

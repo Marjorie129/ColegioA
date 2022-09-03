@@ -1,42 +1,36 @@
-{% extends 'base.html'%} 
+{% extends 'base.html'%}
 {% block titulo %}
 <a href="{% url 'home:homeapp' %}">Home</a>
 <a href="{% url 'home:listadoapp'%}">Estudiantes</a>
 <a href="{% url 'home:adminapp'%}">Administradores</a>
 <a href="{% url 'home:acercaDeapp'%}">A cerca de</a>
-<h1>Listado de Estudiantes</h1>
-{% endblock %} 
+<h1>Listado de Administradores</h1>
+{% endblock %}
 {% block contenido %}
 <table>
   <tr>
     <td>Id</td>
     <td>Nombre</td>
     <td>Apellido</td>
+    <td>Correo Electrónico</td>
   </tr>
   <tr>
     <td>1</td>
-    <td>Marjorie</td>
-    <td>Rivera</td>
+    <td>Jennifer</td>
+    <td>Monzón</td>
+    <td>jennim46@gmail.com</td>
   </tr>
   <tr>
     <td>2</td>
-    <td>Marian</td>
-    <td>Robles</td>
+    <td>Marcos</td>
+    <td>Gamboa</td>
+    <td>gamboamar56@gmail.com</td>
   </tr>
   <tr>
     <td>3</td>
-    <td>Rosaly</td>
-    <td>Perales</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>Daniel</td>
-    <td>Vásquez</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>Mónica</td>
-    <td>Fuentes</td>
+    <td>Evelin</td>
+    <td>López</td>
+    <td>lopezevelin59@gmail.com</td>
   </tr>
 </table>
 {% endblock %}

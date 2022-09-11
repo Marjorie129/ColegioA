@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block titulo %}
+<a href="{% url 'home:homeapp' %}">Home</a>
+<a href="{% url 'home:listadoapp'%}">Estudiantes</a>
+<a href="{% url 'home:adminapp'%}">Administradores</a>
+<a href="{% url 'home:acercaDeapp'%}">A cerca de</a>
+{% endblock %}
+
+{% block contenido %}
+<body style="background-color: #dbeefc;"> 
+<center>
+    <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">¡Bienvenidos!</h1>
+</center>
+<center>
+<h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Página Principal del Colegio</h2>
+</center>
+{% endblock %}

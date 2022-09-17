@@ -1,9 +1,10 @@
 {% extends 'base.html'%}
 {% block titulo %}
-  <a href="{% url 'home:homeapp' %}">Home</a>
-  <a href="{% url 'home:listadoapp'%}">Estudiantes</a>
-  <a href="{% url 'home:adminapp'%}">Administradores</a>
-  <a href="{% url 'home:acercaDeapp'%}">A cerca de</a>
+<a href="{% url 'home:homeapp' %}">Home</a>
+<a href="{% url 'home:listadoapp'%}">Estudiantes Publican</a>
+<a href="{% url 'home:adminapp'%}">Estudiantes Autorizan</a>
+<a href="{% url 'home:acercaDeapp'%}">Articulos</a>
+<a href="{% url 'home:Pubapp'%}">Publicaciones</a>
   {% endblock %}
 {% block contenido %}
 <center>
@@ -11,66 +12,20 @@
 </center>
 <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Administran el Sitio Web.</h2></center>
   <body style="background-color: #dbeefc;"> 
-  <table class="table table-responsive">
-    <tr>
-      <td>A1</td>
-      <td>Mariela</td>
-      <td>Ochoa</td>
-      <td>ochoamar5@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A2</td>
-      <td>Ronaldo</td>
-      <td>Guevara</td>
-      <td>ronaldo20@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A3</td>
-      <td>Oscar</td>
-      <td>Navarro</td>
-      <td>oscarnav32@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A4</td>
-      <td>Roxana</td>
-      <td>Orozco</td>
-      <td>oroxan200@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A5</td>
-      <td>Mario</td>
-      <td>Flores</td>
-      <td>mario205@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A6</td>
-      <td>Daniela</td>
-      <td>Pérez</td>
-      <td>perezdani32@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A7</td>
-      <td>Fabiola</td>
-      <td>Solares</td>
-      <td>fabisol2@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A8</td>
-      <td>Carlos</td>
-      <td>Morales</td>
-      <td>moralescarlos56200@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A9</td>
-      <td>Ester</td>
-      <td>Miranda</td>
-      <td>esterm89@gmail.com</td>
-    </tr>
-    <tr>
-      <td>A10</td>
-      <td>Olga</td>
-      <td>Cardona</td>
-      <td>cardonao238@gmail.com</td>
-    </tr>
-  </table>
+    <table class="table table-responsive">
+      <tr>
+        <td><b>Carnet<b></td>
+        <td><b>Nombre<b></td>
+        <td><b>Apellido<b></td>
+      </tr>
+    {% for Autorizar in estudianteautorizaciones_list %}
+      <tr>
+        <td>{{Autorizar.carnet}}</td>
+        <td>{{Autorizar.nombre}}</td>
+        <td>{{Autorizar.apellido}}</td>
+      </tr>
+        {% endfor %}    
+    </table>
+<h3>Insertar nuevo Estudiante</h3>
+<a class="btn btn-info" href="{% url 'home:crearEstAapp'%}">Insertar</a>
 {% endblock %}

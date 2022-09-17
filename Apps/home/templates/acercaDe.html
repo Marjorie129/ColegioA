@@ -1,13 +1,15 @@
-{% extends 'base.html'%}
+{% extends 'base.html'%} 
 {% block titulo %}
 <a href="{% url 'home:homeapp' %}">Home</a>
-<a href="{% url 'home:listadoapp'%}">Estudiantes</a>
-<a href="{% url 'home:adminapp'%}">Administradores</a>
-<a href="{% url 'home:acercaDeapp'%}">A cerca de</a>
-{% endblock %}
+<a href="{% url 'home:listadoapp'%}">Estudiantes Publican</a>
+<a href="{% url 'home:adminapp'%}">Estudiantes Autorizan</a>
+<a href="{% url 'home:acercaDeapp'%}">Articulos</a>
+<a href="{% url 'home:Pubapp'%}">Publicaciones</a>
+{% endblock %} 
 {% block contenido %}
-<body style="background-color: #dbeefc;"> 
-    <center>
-        <h1 style="font-family: 'fangsong', fangsong, monospace; font-size: 30px; color: rgb(25, 71, 89);">Marjorie Rivera: 0903-19-260</h1>
-    </center>
+  <body style="background-color: #dbeefc;"> 
+  <h3>Crear nuevo articulo</h3>
+  <a class="btn btn-info" href="{% url 'home:crearArtapp'%}">Nuevo</a>
+  <h4>Agregar un comentario</h4>
+  <a class="btn btn-info" href="{% url 'home:crearComeapp'%}">Agregar</a>
 {% endblock %}

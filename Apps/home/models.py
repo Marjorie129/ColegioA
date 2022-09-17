@@ -4,40 +4,46 @@ from django.db import models
 
 # Create your models here.
 
-
-class Estudiante(models.Model):
+class EstudiantePublicaciones(models.Model):
+    carnet = models.CharField(max_length=5)
     nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=200)
-    direccion = models.CharField(max_length=200)
-    correo = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=100)
     creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s %s' % (self.nombre, self.correo)
+        return '%s %s' % (self.nombre,self.apellido)
 
-class Curso(models.Model):
+class EstudianteAutorizaciones(models.Model):
+    carnet = models.CharField(max_length=5)
     nombre = models.CharField(max_length=100)
-    seccion = models.CharField(max_length=200)
-    creacion = models.DateTimeField(auto_now_add=True)
-    Estudiante = models.ManyToManyField(Estudiante)
-
-    def __str__(self):
-        return '%s %s' % (self.nombre, self.seccion)
-
-class Telefono(models.Model):
-    tipo_telefono=(
-        ('C', 'Casa'),
-        ('M', 'Celular'),
-        ('T', 'Trabajo'),
-    )
-    telefono = models.CharField(max_length=100)
-    Estudiante=models.ForeignKey(Estudiante,on_delete=models.CASCADE)
-    tipo = models.CharField(
-        max_length=1,
-        choices=tipo_telefono,
-        default='C',
-    )
+    apellido = models.CharField(max_length=100)
     creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s %s' % (self.telefono, self.tipo)
+        return '%s %s' % (self.nombre,self.apellido)
+
+class Articulos(models.Model):
+    titulo = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=500)
+    autoriza = models.ForeignKey(EstudianteAutorizaciones,on_delete=models.CASCADE)
+    creacion = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return '%s' % (self.titulo)
+
+class Publicaciones(models.Model):
+    articulo = models.ForeignKey(Articulos,on_delete=models.CASCADE)
+    publica = models.ForeignKey(EstudiantePublicaciones,on_delete=models.CASCADE)
+    creacion = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return '%s %s' % (self.articulo,self.publica)
+
+class Comentarios(models.Model):
+    articulo = models.ManyToManyField(Articulos)
+    comentario = models.CharField(max_length=500)
+    comenta = models.ForeignKey(EstudiantePublicaciones,on_delete=models.CASCADE) 
+    creacion = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return '%s %s' % (self.comenta,self.comentario)

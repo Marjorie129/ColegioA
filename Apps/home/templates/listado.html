@@ -1,82 +1,31 @@
 {% extends 'base.html'%} 
 {% block titulo %}
 <a href="{% url 'home:homeapp' %}">Home</a>
-<a href="{% url 'home:listadoapp'%}">Estudiantes</a>
-<a href="{% url 'home:adminapp'%}">Administradores</a>
-<a href="{% url 'home:acercaDeapp'%}">A cerca de</a>
+<a href="{% url 'home:listadoapp'%}">Estudiantes Publican</a>
+<a href="{% url 'home:adminapp'%}">Estudiantes Autorizan</a>
+<a href="{% url 'home:acercaDeapp'%}">Articulos</a>
+<a href="{% url 'home:Pubapp'%}">Publicaciones</a>
 {% endblock %} 
 {% block contenido %}
 <center>
-  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Listado de Estudiantes</h1>
+  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Listado de Estudiantes que publican</h1>
 </center>
-  <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Estos son los estudiantes asociados al sitio web.</h2></center>
+  <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Estos son los estudiantes que publican artículos.</h2></center>
   <body style="background-color: #dbeefc;"> 
   <table class="table table-responsive">
     <tr>
-      <td><b>Id<b></td>
+      <td><b>Carnet<b></td>
       <td><b>Nombre<b></td>
       <td><b>Apellido<b></td>
-      <td><b>Correo Electrónico<b></td>
     </tr>
+  {% for Publicar in estudiantepublicaciones_list %}
     <tr>
-      <td>1</td>
-      <td>Jennifer</td>
-      <td>Monzón</td>
-      <td>jennim46@gmail.com</td>
+      <td>{{Publicar.carnet}}</td>
+      <td>{{Publicar.nombre}}</td>
+      <td>{{Publicar.apellido}}</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Marcos</td>
-      <td>Gamboa</td>
-      <td>gamboamar56@gmail.com</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Evelin</td>
-      <td>López</td>
-      <td>lopezevelin59@gmail.com</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Marian</td>
-      <td>Robles</td>
-      <td>marianr82@gmail.com</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Rosaly</td>
-      <td>Perales</td>
-      <td>peralesros87.com</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Mónica</td>
-      <td>Fuentes</td>
-      <td>fuentesmonica753@gmail.com</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Daniel</td>
-      <td>Vásquez</td>
-      <td>danielv@gmail.com</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Anderson</td>
-      <td>Perales</td>
-      <td>andersonp75@gmail.com</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Efraín</td>
-      <td>Enríquez</td>
-      <td>enriefrain9@gmail.com</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Sandra</td>
-      <td>Ramos</td>
-      <td>sramos215@gmail.com</td>
-    </tr>
+      {% endfor %}    
   </table>
+<h3>Insertar nuevo Estudiante</h3>
+<a class="btn btn-info" href="{% url 'home:crearEstPapp'%}">Insertar</a>
 {% endblock %}

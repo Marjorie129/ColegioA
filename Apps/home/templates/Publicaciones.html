@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block titulo %}
+<a href="{% url 'home:homeapp' %}">Home</a>
+<a href="{% url 'home:listadoapp'%}">Estudiantes Publican</a>
+<a href="{% url 'home:adminapp'%}">Estudiantes Autorizan</a>
+<a href="{% url 'home:acercaDeapp'%}">Articulos</a>
+<a href="{% url 'home:Pubapp'%}">Publicaciones</a>
+  {% endblock %}
+{% block contenido %}
+  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Publicaciones</h1>
+  <body style="background-color: #dbeefc;"> 
+    {% for Publicacion in publicaciones_list %}
+    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <p class="card-text"><b>Articulo: </b>{{Publicacion.articulo}}</p>
+          <p class="card-text"><b>Publica: </b>{{Publicacion.publica}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    <h4>Crear nueva publicacion</h4>
+    <a class="btn btn-info" href="{% url 'home:crearPubapp'%}">Crear</a>
+{% endblock %}

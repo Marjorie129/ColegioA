@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from io import UnsupportedOperation
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, CreateView
-from .forms import ArticuloForm, ComentarioForm, EstudiantePForm, EstudianteAForm, PublicacionForm, ComentarioForm
+from .forms import ArticuloForm, ComentarioForm, EstudiantePForm, EstudianteAForm, PublicacionForm, ComentarioForm, RegistroForm
 from django.urls import reverse_lazy
-from .models import EstudianteAutorizaciones, EstudiantePublicaciones, Publicaciones
+from .models import EstudianteAutorizaciones, EstudiantePublicaciones, Publicaciones, Usuario
 from django.views import generic
 from django.http import HttpRequest
-
+#login
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
 # Create your views here.
 
 class HomeView(TemplateView):
@@ -95,4 +99,26 @@ class CrearComentarioView(CreateView):
     template_name = 'crearComentario.html'
     form_class = ComentarioForm
     success_url = reverse_lazy('home:homeapp')
+
+class RegistroView(CreateView):
+    model = Usuario
+    form_class = RegistroForm
+    success_url = reverse_lazy('home:homeapp')
+
+#class LoginView(LoginView):
+    #template_name='login.html'
+
+def Login(request):
+    if request.method=="POST":
+       form=AuthenticationForm(request, data=request.POST)
+       if form.is_valid():
+        NombreUsuario=form.cleaned_data.get("username")
+        contrasenia=form.cleaned_data.get("password")
+        usuario=authenticate(username=NombreUsuario, password=contrasenia)
+        if usuario is not None:
+           login(request, usuario)
+           return redirect("home:homeapp")
+
+    form=AuthenticationForm()
+    return render(request,"login.html",{"form":form})
 

@@ -5,6 +5,7 @@
 <a href="{% url 'home:adminapp'%}">Estudiantes Autorizan</a>
 <a href="{% url 'home:acercaDeapp'%}">Articulos</a>
 <a href="{% url 'home:Pubapp'%}">Publicaciones</a>
+<a href="{% url 'home:RegistroApp'%}">Registrar Usuario</a>
 {% endblock %} 
 {% block contenido %}
 <center>
@@ -12,7 +13,7 @@
 </center>
   <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Datos del estudiante que publica:</h2></center>
   <body style="background-color: #dbeefc;"> 
-    <form method="POST" class="form-group">
+    <form style="color:#0f0202; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 0.40cm;" method="POST">
         {% csrf_token %}
         Carnet{{ form.carnet }}
         Nombre {{ form.nombre }}

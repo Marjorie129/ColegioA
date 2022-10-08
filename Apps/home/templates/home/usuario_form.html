@@ -8,16 +8,21 @@
 <a href="{% url 'home:RegistroApp'%}">Registrar Usuario</a>
 {% endblock %} 
 {% block contenido %}
+{% block content %}
 <center>
-  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Formulario para ingresar un comentario</h1>
+  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Formulario para crear un articulo</h1>
 </center>
   <body style="background-color: #dbeefc;"> 
-    <form method="POST" class="form-group">
+    <form method="POST" action="">
         {% csrf_token %}
-        Articulo{{ form.articulo}}
-        Comentario{{ form.comentario }}
-        Comenta{{ form.comenta}}
+        Usuario: {{form.username}} 
+        Email: {{form.email}}
+        Nombre: {{form.first_name}}
+        Apellido: {{form.last_name}}
+        Contraseña: {{form.password1}}
+        Confirmar contraseña: {{form.password2}}
         <input type="submit" name="Guardar" class="btn btn-dark btn-sm">
     </form>
-    <a class="btn btn-info" href="{% url 'home:acercaDeapp'%}">Regresar</a>
-{% endblock %}
+    <a class="btn btn-info" href="{% url 'home:Pubapp'%}">Regresar</a>
+    {% endblock content%}
+    {% endblock%}

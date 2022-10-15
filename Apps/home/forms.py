@@ -1,5 +1,5 @@
 from django import forms
-from .models import EstudianteAutorizaciones, EstudiantePublicaciones, Articulos, Publicaciones, Comentarios
+from .models import EstudianteAutorizaciones, EstudiantePublicaciones, ArticuloEstudiante, Publicaciones, ComentariosEstud
 #login
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -18,7 +18,7 @@ class EstudiantePForm(forms.ModelForm):
 
 class ArticuloForm(forms.ModelForm):
     class Meta:
-        model = Articulos
+        model = ArticuloEstudiante
         fields = '__all__'
 
 
@@ -30,7 +30,7 @@ class PublicacionForm(forms.ModelForm):
 
 class ComentarioForm(forms.ModelForm):
     class Meta:
-        model = Comentarios
+        model = ComentariosEstud
         fields = '__all__'
 
 

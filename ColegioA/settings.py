@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'ColegioA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'colegioa',
+        'NAME': 'prueba',
         'USER': 'root',
         'PASSWORD': 'admin',
         'HOST':'localhost',

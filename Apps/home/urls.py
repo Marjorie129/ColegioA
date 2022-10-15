@@ -15,21 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from.views import HomeView, ListadoView, AdministradoresView, AcercaDeView, CrearEstudianteAView, CrearEstudiantePView, CrearArticuloView, CrearPublicacionView, CrearComentarioView, PublicacionesView, RegistroView, LoginView, Login
+from.views import HomeView, ListadoView, AdministradoresView, CrearEstudianteAView, CrearEstudiantePView, CrearArticuloView, CrearPublicacionView, CrearComentarioView, PublicacionesView,  ArticulosView, RegistroView, ComentariosView,Login
 
 app_name='home'
 
 urlpatterns = [
     path('home/', HomeView.as_view(), name='homeapp'),
     path('listado/', ListadoView.as_view(), name='listadoapp'),
-    path('administradores/', AdministradoresView.as_view(), name='adminapp'),
-    path('acercaDe/', AcercaDeView.as_view(), name='acercaDeapp'),
+    path('administradores/', AdministradoresView.as_view(), name='adminapp'),    
     path('crearEstA/', CrearEstudianteAView.as_view(), name='crearEstAapp'),
     path('crearEstP/', CrearEstudiantePView.as_view(), name='crearEstPapp'),
+    path('Art/', ArticulosView.as_view(), name='acercaDeapp'),
     path('crearArt/', CrearArticuloView.as_view(), name='crearArtapp'),
     path('crearPub/', CrearPublicacionView.as_view(), name='crearPubapp'),
     path('crearCome/', CrearComentarioView.as_view(), name='crearComeapp'),
     path('verPub/', PublicacionesView.as_view(), name='Pubapp'),
     path('registro/', RegistroView.as_view(), name='RegistroApp'),
+    path('comentarios/', ComentariosView.as_view(), name='verComentapp'),
     path('', Login, name='login'),
 ]

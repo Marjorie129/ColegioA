@@ -1,16 +1,31 @@
 {% extends 'base.html'%}
 {% block contenido %}
 <body style="background-color: #dbeefc;">
+
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control bg-light border-0 small" placeholder="Buscar por título" type="text" name="titulo" value="{{request.GET.titulo}}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-search fa-sm">Buscar</i>
+        </button>
+      </div>
+    </div>
+  </form>
   {% for Arti in articuloestudiante_list %}
   <div class="container">
     <div class="card-group mt-3">
-
       <div class="card text-center border-info">
         <div class="card-body">
           <p class="card-text"><b> Título del artículo: </b>{{Arti.titulo}}</p>
           <p class="card-text"><b> Descripción: </b>{{Arti.descripcion}}</p>
-          <p class="card-text"><b> Persona que autoriza: </b>{{Arti.autoriza}}</p>
+          <!--<p class="card-text"><b> Persona que autoriza: </b>{{Arti.autoriza}}</p>-->
+          <div class="btn-group" role="group" aria-label="Basic example"></div>
+          <a href="{% url 'home:detallesArtapp' Arti.id%}"class="btn btn-primary btn-sm">Ver</a>
+          <a href="{% url 'home:editarArtapp' Arti.id%}" class="btn btn-dark btn-sm">Editar</a>  
         </div>
+      </div>
       </div>
     </div>
   </div>

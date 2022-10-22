@@ -1,15 +1,35 @@
 {% extends 'base.html'%}
 {% block contenido %}
-  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Publicaciones</h1>
-  <body style="background-color: #dbeefc;"> 
-    {% for Publicacion in publicaciones_list %}
-    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <p class="card-text"><b>Articulo: </b>{{Publicacion.articulo}}</p>
-          <p class="card-text"><b>Publica: </b>{{Publicacion.publica}}</p>
-        </div>
+<body style="background-color: #dbeefc;">
+<h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Publicaciones</h1>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET">
+  {% csrf_token %}
+  <div class="input-group">
+    <input class="form-control bg-light border-0 small" placeholder="Por ID del que publica" type="text" name="id"
+      value="{{request.GET.id}}">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search fa-sm">Buscar</i>
+      </button>
+    </div>
+  </div>
+</form>
+{% for Publicacion in publicaciones_list %}
+<div class="container">
+  <div class="card-group mt-3">
+    <div class="card text-center border-info">
+      <div class="card-body">
+        <p class="card-text"><b> Articulo: </b>{{Publicacion.articulo}}</p>
+        <!--<p class="card-text"><b> Publica: </b>{{Publicacion.publica}}</p>-->
+        <div class="btn-group" role="group" aria-label="Basic example"></div>
+        <a href="{% url 'home:detallesPubapp' Publicacion.id%}" class="btn btn-primary btn-sm">Ver</a>
+        <a href="{% url 'home:editarPubapp' Publicacion.id %}" class="btn btn-dark btn-sm">Editar</a>
       </div>
-      {% endfor %}
-    <h4>Crear nueva publicacion</h4>
-    <a class="btn btn-info" href="{% url 'home:crearPubapp'%}">Crear</a>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+<h4>Crear nueva publicacion</h4>
+<a class="btn btn-info" href="{% url 'home:crearPubapp'%}">Crear</a>
 {% endblock %}

@@ -5,17 +5,32 @@
 </center>
 <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Administran el Sitio Web.</h2></center>
   <body style="background-color: #dbeefc;"> 
+
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control bg-light border-0 small" placeholder="Buscar por nombre" type="text" name="nombre" value="{{request.GET.nombre}}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-search fa-sm">Buscar</i>
+        </button>
+      </div>
+    </div>
+  </form>
     <table class="table table-responsive">
       <tr>
         <td><b>Carnet<b></td>
         <td><b>Nombre<b></td>
         <td><b>Apellido<b></td>
+        <td><b>Acciones<b></td>
       </tr>
     {% for Autorizar in estudianteautorizaciones_list %}
       <tr>
         <td>{{Autorizar.carnet}}</td>
         <td>{{Autorizar.nombre}}</td>
         <td>{{Autorizar.apellido}}</td>
+        <td><a class="btn btn-info btn-sm" href="{% url 'home:detallesEAapp' Autorizar.id%}">Ver</a></td>
+        <td><a href="{% url 'home:editarEAapp' Autorizar.id%}" class="btn btn-dark btn-sm">Editar</td>
       </tr>
         {% endfor %}    
     </table>

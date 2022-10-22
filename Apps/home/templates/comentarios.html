@@ -1,17 +1,34 @@
 {% extends 'base.html'%}
 {% block contenido %}
-  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Comentarios</h1>
-  <body style="background-color: #dbeefc;"> 
-    {% for Coment in comentariosestud_list %}
-    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <p class="card-text"><b>Articulo: </b>{{Coment.articulo}}</p>
-          <p class="card-text"><b>Comentario: </b>{{Coment.comentario}}</p>
-          <p class="card-text"><b>Comenta: </b>{{Coment.comenta}}</p>
-        </div>
+<h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Comentarios</h1>
+
+<body style="background-color: #dbeefc;">
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control bg-light border-0 small" placeholder="Buscar por comentario" type="text" name="comenta"
+        value="{{request.GET.comenta}}">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">
+          <i class="fas fa-search fa-sm">Buscar</i>
+        </button>
       </div>
-      {% endfor %}
-      <a class="btn btn-info" href="{% url 'home:acercaDeapp'%}">Regresar</a>
-      <h3 style="font-family: 'fangsong', fangsong, monospace; color: rgb(17, 70, 107);">Agregar un comentario</h3>
-      <a class="btn btn-primary" href="{% url 'home:crearComeapp'%}">Agregar</a>
-{% endblock %}
+    </div>
+  </form>
+  {% for Coment in comentariosestud_list %}
+  <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-body">
+      <p class="card-text"><b> Articulo: </b>{{Coment.articulo}}</p>
+      <p class="card-text"><b> Comentario: </b>{{Coment.comentario}}</p>
+      <p class="card-text"><b> Comenta: </b>{{Coment.comenta}}</p>
+      <div class="btn-group" role="group" aria-label="Basic example"></div>
+      <a href="{% url 'home:detallesComentapp' Coment.id%}" class="btn btn-primary btn-sm">Ver</a>
+      <a href="{% url 'home:editarComentapp' Coment.id %}" class="btn btn-dark btn-sm">Editar</a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  <a class="btn btn-info" href="{% url 'home:acercaDeapp'%}">Regresar</a>
+  <h3 style="font-family: 'fangsong', fangsong, monospace; color: rgb(17, 70, 107);">Agregar un comentario</h3>
+  <a class="btn btn-primary" href="{% url 'home:crearComeapp'%}">Agregar</a>
+  {% endblock %}

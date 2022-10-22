@@ -1,0 +1,17 @@
+{% extends 'base.html'%} 
+{% block contenido %}
+<center>
+  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Formulario para crear un estudiante</h1>
+</center>
+  <center><h2 style="font-family: 'fangsong', fangsong, monospace; color: rgb(42, 97, 136);">Datos del estudiante que publica:</h2></center>
+  <body style="background-color: #dbeefc;"> 
+    <form style="color:#0f0202; font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 0.40cm;" method="POST">
+        {% csrf_token %}
+        Carnet{{ form.carnet }}
+        Nombre {{ form.nombre }}
+        Apellido {{ form.apellido }}
+        <input type="submit" name="Guardar" class="btn btn-dark btn-sm">
+    </form>
+<h3>Ver listado de estudiantes</h3>
+<a id="btnListar" class="btn btn-primary" href="{% url 'home:listadoapp'%}">Listar</a>
+{% endblock %}

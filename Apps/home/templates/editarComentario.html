@@ -1,0 +1,15 @@
+{% extends 'base.html'%} 
+{% block contenido %}
+<center>
+  <h1 style="font-family: 'fangsong', fangsong, monospace; color: rgb(49, 126, 181);">Formulario para ingresar un comentario</h1>
+</center>
+  <body style="background-color: #dbeefc;"> 
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        Articulo{{ form.articulo}}
+        Comentario{{ form.comentario }}
+        Comenta{{ form.comenta}}
+        <input type="submit" name="Guardar" class="btn btn-dark btn-sm">
+    </form>
+    <a class="btn btn-info" href="{% url 'home:verComentapp'%}">Regresar</a>
+{% endblock %}
